@@ -26,19 +26,13 @@ def add_contact(args, contacts): # Якщо аргументів менше 2, �
 @input_error
 def change_contact(args, contacts):# Якщо аргументів менше 2, виникне ValueError  
     name, phone = args
-    if name in contacts:
-        contacts[name] = phone
-        return "Contact updated."
-    else:  # Генеруємо KeyError якщо контакт не знайдено
-        raise KeyError
+    contacts[name] = phone
+    return "Contact updated."
 
 @input_error
 def show_phone(args, contacts):  # Якщо args порожній, виникне IndexError 
     name = args[0]
-    if name in contacts:
-        return contacts[name]
-    else:
-        raise KeyError
+    return contacts[name]
 
 @input_error
 def show_all(contacts):

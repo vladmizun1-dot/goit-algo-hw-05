@@ -4,7 +4,6 @@ def generator_numbers(text: str) -> Generator[float, None, None]: # Аналіз
   
     for word in text.split(): # Розділяємо текст на слова пробілами
         try:
-            if '.' in word or word.isdigit(): # Перевіряємо, чи є слово числом цілим чи з крапкою
                 yield float(word)
         except ValueError: # якщо слово не число то пропускаємо його
             continue
