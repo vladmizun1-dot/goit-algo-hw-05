@@ -1,5 +1,6 @@
-def input_error(func): 
-    def inner(*args, **kwargs): # Декоратор
+def input_error(func):
+
+    def inner(*args, **kwargs): # декоратор
         try:
             return func(*args, **kwargs)
         except ValueError:
@@ -18,19 +19,19 @@ def parse_input(user_input):
     return cmd, *args
 
 @input_error
-def add_contact(args, contacts): # Якщо аргументів менше 2, виникне ValueError 
+def add_contact(args, contacts):# Якщо в args менше 2 елементів, Python сам викине ValueError
     name, phone = args
     contacts[name] = phone
     return "Contact added."
 
 @input_error
-def change_contact(args, contacts):# Якщо аргументів менше 2, виникне ValueError  
+def change_contact(args, contacts):
     name, phone = args
     contacts[name] = phone
     return "Contact updated."
 
 @input_error
-def show_phone(args, contacts):  # Якщо args порожній, виникне IndexError 
+def show_phone(args, contacts):
     name = args[0]
     return contacts[name]
 
@@ -46,10 +47,11 @@ def show_all(contacts):
 def main():
     contacts = {}
     print("Welcome to the assistant bot!")
+    
     while True:
         user_input = input("Enter a command: ")
         command, *args = parse_input(user_input)
-        # Обробляємо всі команди
+        # обробка команд 
         if command in ["close", "exit"]:
             print("Good bye, my dear!")
             break
